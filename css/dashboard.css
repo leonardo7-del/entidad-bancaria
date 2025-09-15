@@ -1,13 +1,13 @@
 /* Estilos para el Dashboard */
 
 /* Estilos generales del dashboard */
-.dashboard {
+.dashboard-section {
     padding: 2rem 0;
     background-color: #f8f9fa;
     min-height: calc(100vh - 80px - 300px);
 }
 
-.dashboard .container {
+.dashboard-section .container {
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -51,6 +51,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
+    text-decoration: none;
 }
 
 .btn-primary:hover {
@@ -176,7 +177,7 @@
 
 .accounts-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.5rem;
 }
 
@@ -193,17 +194,11 @@
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
 
-.primary-account {
-    border-top: 4px solid #0056b3;
-}
-
-.account-card-header {
+.account-header {
     padding: 1.2rem 1.5rem;
     background-color: #f8f9fa;
     border-bottom: 1px solid #e0e0e0;
 }
-
-
 
 .account-number {
     color: #666;
@@ -211,7 +206,7 @@
     display: block;
 }
 
-.account-card-body {
+.account-body {
     padding: 1.5rem;
 }
 
@@ -234,26 +229,20 @@
     margin-top: 1rem;
 }
 
-.btn-link, .btn-details, .btn-transfer {
+.btn-details, .btn-transfer {
+    background-color: #f0f0f0;
     color: #0056b3;
-    text-decoration: none;
-    font-size: 0.9rem;
-    display: inline-flex;
-    align-items: center;
-    transition: all 0.3s ease;
-    padding: 0.5rem 0.8rem;
-    border-radius: 4px;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
     font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
 }
 
-.btn-link:hover, .btn-details:hover, .btn-transfer:hover {
-    color: #003d7a;
-    text-decoration: underline;
-    background-color: rgba(0, 86, 179, 0.1);
-}
-
-.btn-link i {
-    margin-right: 0.5rem;
+.btn-details:hover, .btn-transfer:hover {
+    background-color: #0056b3;
+    color: white;
 }
 
 .add-account {
@@ -262,6 +251,7 @@
     justify-content: center;
     background-color: #f8f9fa;
     border: 2px dashed #ccc;
+    cursor: pointer;
 }
 
 .add-account-content {
@@ -270,7 +260,7 @@
 }
 
 .add-account-content i {
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: #0056b3;
     margin-bottom: 1rem;
 }
@@ -286,7 +276,7 @@
     font-size: 0.9rem;
 }
 
-.btn-outline {
+.add-account-content .btn-outline {
     background-color: transparent;
     border: 1px solid #0056b3;
     color: #0056b3;
@@ -297,21 +287,17 @@
     transition: all 0.3s ease;
 }
 
-.btn-outline:hover {
+.add-account-content .btn-outline:hover {
     background-color: #0056b3;
     color: white;
 }
 
-/* Widgets */
-.dashboard-widgets {
-    margin-bottom: 2rem;
-}
-
-.widget-row {
+/* Widgets financieros */
+.financial-widgets {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .widget {
@@ -341,80 +327,35 @@
     gap: 0.5rem;
 }
 
-.btn-icon {
-    background-color: transparent;
-    border: none;
+.btn-refresh, .btn-expand {
+    background-color: #f0f0f0;
     color: #666;
-    font-size: 0.9rem;
-    cursor: pointer;
+    border: none;
     padding: 0.5rem;
     border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
     transition: all 0.3s ease;
 }
 
-.btn-icon:hover {
-    background-color: #f0f0f0;
-    color: #0056b3;
+.btn-refresh:hover, .btn-expand:hover {
+    background-color: #0056b3;
+    color: white;
 }
 
 .widget-body {
     padding: 1.5rem;
 }
 
-/* Resumen financiero */
-.financial-summary {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1.5rem;
-}
-
-.summary-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.summary-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-}
-
-.summary-icon.income {
-    background-color: #2ecc71;
-}
-
-.summary-icon.expense {
-    background-color: #e74c3c;
-}
-
-.summary-icon.balance {
-    background-color: #3498db;
-}
-
-.summary-label {
-    color: #666;
-    font-size: 0.8rem;
-    margin-bottom: 0.2rem;
-}
-
-.summary-value {
-    font-weight: 700;
-    color: #333;
-    font-size: 1.1rem;
-}
-
-.chart-container {
-    height: 200px;
-}
-
 /* Próximos pagos */
-.upcoming-payments {
-    margin-bottom: 1rem;
+.payment-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .payment-item {
@@ -444,13 +385,13 @@
     flex-grow: 1;
 }
 
-.payment-name {
+.payment-details h4 {
     font-weight: 600;
     color: #333;
     margin-bottom: 0.2rem;
 }
 
-.payment-date {
+.payment-details p {
     font-size: 0.8rem;
     color: #666;
 }
@@ -458,14 +399,31 @@
 .payment-amount {
     font-weight: 700;
     font-size: 1rem;
-}
-
-.payment-amount.expense {
     color: #e74c3c;
 }
 
-.payment-amount.income {
-    color: #2ecc71;
+.add-payment {
+    justify-content: center;
+    cursor: pointer;
+}
+
+.add-payment-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #0056b3;
+}
+
+.add-payment-content i {
+    font-size: 1.2rem;
+}
+
+.add-payment-content span {
+    font-weight: 500;
+}
+
+.add-payment:hover .add-payment-content {
+    color: #003d7a;
 }
 
 .widget-footer {
@@ -503,34 +461,33 @@
 }
 
 /* Productos contratados */
-.products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1rem;
+.product-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .product-item {
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    padding: 1.2rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #f0f0f0;
 }
 
-.product-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+.product-item:last-child {
+    border-bottom: none;
 }
 
 .product-icon {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     background-color: #0056b3;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    margin-bottom: 1rem;
+    margin-right: 1rem;
 }
 
 .product-details h4 {
@@ -558,38 +515,28 @@
     color: #2ecc71;
 }
 
-.product-status.pending {
-    background-color: #fff8e6;
-    color: #f39c12;
-}
-
-.product-status.inactive {
-    background-color: #f8e6e6;
-    color: #e74c3c;
-}
-
 .add-product {
-    border: 2px dashed #ccc;
-    display: flex;
-    align-items: center;
     justify-content: center;
-    background-color: white;
+    cursor: pointer;
 }
 
 .add-product-content {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #0056b3;
 }
 
 .add-product-content i {
-    font-size: 2rem;
-    color: #0056b3;
-    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
 }
 
-.add-product-content h4 {
-    margin-bottom: 0.5rem;
-    color: #333;
-    font-size: 1rem;
+.add-product-content span {
+    font-weight: 500;
+}
+
+.add-product:hover .add-product-content {
+    color: #003d7a;
 }
 
 /* Accesos rápidos */
@@ -605,7 +552,7 @@
 
 .quick-access-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     gap: 1rem;
 }
 
@@ -613,7 +560,7 @@
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    padding: 1.5rem 1rem;
+    padding: 1.2rem;
     text-align: center;
     text-decoration: none;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
@@ -630,16 +577,16 @@
 }
 
 .quick-access-icon {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     background-color: #e6f0fa;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 1rem;
+    margin: 0 auto 0.8rem;
     color: #0056b3;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -652,7 +599,6 @@
     color: #333;
     font-weight: 600;
     font-size: 0.9rem;
-    margin-top: 0.5rem;
     transition: color 0.3s ease;
 }
 
@@ -662,16 +608,13 @@
 
 /* Responsive */
 @media (max-width: 992px) {
-    .financial-summary {
-        flex-direction: column;
-        gap: 1rem;
+    .financial-widgets {
+        grid-template-columns: 1fr;
     }
-    
+
     .accounts-grid,
-    .widget-row,
-    .products-grid,
     .quick-access-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     }
 }
 
@@ -681,24 +624,28 @@
         align-items: flex-start;
         gap: 1rem;
     }
-    
+
     .user-actions {
         align-self: flex-end;
     }
-    
+
     .accounts-grid,
-    .widget-row,
-    .products-grid {
-        grid-template-columns: 1fr;
-    }
-    
     .quick-access-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 576px) {
     .quick-access-grid {
         grid-template-columns: 1fr;
+    }
+
+    .btn-primary {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    .account-card, .widget, .quick-access-item {
+        padding: 1rem;
     }
 }

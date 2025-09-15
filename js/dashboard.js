@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Eliminar la 'x molesta' si existe
-    const closeMenu = document.querySelector('.close-menu');
+    
     if (closeMenu) {
         closeMenu.remove();
     }

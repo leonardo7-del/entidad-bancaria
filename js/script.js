@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Agregar clase 'close-menu' al menú móvil solo si no estamos en el dashboard
     if (nav && !window.location.href.includes('dashboard.html')) {
         const closeMenu = document.createElement('div');
-        closeMenu.classList.add('close-menu');
         closeMenu.innerHTML = '&times;';
         nav.appendChild(closeMenu);
 
