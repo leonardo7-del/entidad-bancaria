@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transacciones - BancoSeguro</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/transacciones.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header con navegación -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>BancoSeguro</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="index.html#servicios">Servicios</a></li>
+                    <li><a href="index.html#nosotros">Nosotros</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                    <li><a href="transacciones.html" class="active">Transacciones</a></li>
+                    <li><a href="#" class="btn-login">Iniciar Sesión</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sección de Transacciones -->
+    <section class="transactions">
+        <div class="container">
+            <div class="section-header">
+                <h2>Historial de Transacciones</h2>
+                <p>Gestiona y visualiza todos tus movimientos bancarios</p>
+            </div>
+
+            <div class="account-summary">
+                <div class="account-info">
+                    <div class="account-details">
+                        <h3>Cuenta Corriente</h3>
+                        <div class="account-number">ES12 3456 7890 1234 5678 9012</div>
+                    </div>
+                    <div class="account-balance">
+                        <div class="balance-label">Saldo disponible</div>
+                        <div class="balance-amount">2.547,35 €</div>
+                    </div>
+                </div>
+                <div class="quick-actions">
+                    <button class="btn btn-secondary" id="btnNewTransfer">
+                        <i class="fas fa-exchange-alt"></i> Nueva transferencia
+                    </button>
+                    <button class="btn btn-secondary" id="btnDownloadPdf">
+                        <i class="fas fa-file-pdf"></i> Descargar extracto
+                    </button>
+                </div>
+            </div>
+
+            <div class="transactions-container">
+                <div class="transactions-filters">
+                    <div class="filter-group">
+                        <label for="dateRange">Periodo</label>
+                        <select id="dateRange">
+                            <option value="7">Últimos 7 días</option>
+                            <option value="30" selected>Últimos 30 días</option>
+                            <option value="90">Últimos 3 meses</option>
+                            <option value="180">Últimos 6 meses</option>
+                            <option value="365">Último año</option>
+                            <option value="custom">Personalizado</option>
+                        </select>
+                    </div>
+                    <div class="filter-group custom-date-range" style="display: none;">
+                        <label for="startDate">Desde</label>
+                        <input type="date" id="startDate">
+                        <label for="endDate">Hasta</label>
+                        <input type="date" id="endDate">
+                    </div>
+                    <div class="filter-group">
+                        <label for="transactionType">Tipo</label>
+                        <select id="transactionType">
+                            <option value="all">Todos</option>
+                            <option value="income">Ingresos</option>
+                            <option value="expense">Gastos</option>
+                            <option value="transfer">Transferencias</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="searchTransaction">Buscar</label>
+                        <div class="search-input">
+                            <input type="text" id="searchTransaction" placeholder="Buscar por concepto o importe">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                    <button id="applyFilters" class="btn btn-primary">Aplicar filtros</button>
+                </div>
+
+                <div class="transactions-list">
+                    <div class="transactions-header">
+                        <div class="transaction-date">Fecha</div>
+                        <div class="transaction-concept">Concepto</div>
+                        <div class="transaction-amount">Importe</div>
+                        <div class="transaction-balance">Saldo</div>
+                    </div>
+                    <div class="transactions-body" id="transactionsContainer">
+                        <!-- Las transacciones se cargarán dinámicamente con JavaScript -->
+                    </div>
+                </div>
+
+                <div class="transactions-summary">
+                    <div class="summary-item">
+                        <div class="summary-label">Ingresos</div>
+                        <div class="summary-value income" id="totalIncome">0,00 €</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Gastos</div>
+                        <div class="summary-value expense" id="totalExpense">0,00 €</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Balance</div>
+                        <div class="summary-value" id="totalBalance">0,00 €</div>
+                    </div>
+                </div>
+
+                <div class="transactions-pagination">
+                    <button class="pagination-btn" id="prevPage" disabled>
+                        <i class="fas fa-chevron-left"></i> Anterior
+                    </button>
+                    <div class="pagination-info" id="paginationInfo">Página 1 de 1</div>
+                    <button class="pagination-btn" id="nextPage" disabled>
+                        Siguiente <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="transactions-charts">
+                <div class="chart-container">
+                    <h3>Gastos por categoría</h3>
+                    <canvas id="expensesChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Evolución de saldo</h3>
+                    <canvas id="balanceChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de Nueva Transferencia -->
+    <div id="transferModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Nueva Transferencia</h2>
+            <form id="transferForm">
+                <div class="form-group">
+                    <label for="recipientName">Beneficiario</label>
+                    <input type="text" id="recipientName" name="recipientName" required>
+                </div>
+                <div class="form-group">
+                    <label for="recipientAccount">Cuenta de destino (IBAN)</label>
+                    <input type="text" id="recipientAccount" name="recipientAccount" placeholder="ES00 0000 0000 0000 0000 0000" required>
+                </div>
+                <div class="form-group">
+                    <label for="transferAmount">Importe</label>
+                    <div class="amount-input">
+                        <input type="number" id="transferAmount" name="transferAmount" min="0.01" step="0.01" required>
+                        <span class="currency">€</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="transferConcept">Concepto</label>
+                    <input type="text" id="transferConcept" name="transferConcept" required>
+                </div>
+                <div class="form-group">
+                    <label for="transferDate">Fecha de ejecución</label>
+                    <input type="date" id="transferDate" name="transferDate" required>
+                </div>
+                <div class="form-options">
+                    <div class="save-recipient">
+                        <input type="checkbox" id="saveRecipient" name="saveRecipient">
+                        <label for="saveRecipient">Guardar beneficiario</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Realizar transferencia</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Login -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Iniciar Sesión</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Usuario</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-options">
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label for="remember">Recordarme</label>
+                    </div>
+                    <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+            </form>
+            <div class="register-link">
+                <p>¿No tienes cuenta? <a href="registro.html">Regístrate aquí</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>BancoSeguro</h2>
+                    <p>Tu entidad bancaria de confianza</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="index.html#servicios">Servicios</a></li>
+                        <li><a href="index.html#nosotros">Nosotros</a></li>
+                        <li><a href="index.html#contacto">Contacto</a></li>
+                        <li><a href="transacciones.html">Transacciones</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h3>Servicios</h3>
+                    <ul>
+                        <li><a href="registro.html">Cuentas Bancarias</a></li>
+                        <li><a href="prestamos.html">Préstamos</a></li>
+                        <li><a href="transacciones.html">Transacciones</a></li>
+                        <li><a href="#">Inversiones</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Síguenos</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 BancoSeguro. Todos los derechos reservados.</p>
+                <div class="footer-legal">
+                    <a href="#">Términos y Condiciones</a>
+                    <a href="#">Política de Privacidad</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/transacciones.js"></script>
+</body>
+</html>

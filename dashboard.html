@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - BancoSeguro</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header con navegación -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>BancoSeguro</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="index.html#servicios">Servicios</a></li>
+                    <li><a href="index.html#nosotros">Nosotros</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                    <li><a href="transacciones.html">Transacciones</a></li>
+                    <li><a href="dashboard.html" class="active">Mi Cuenta</a></li>
+                    <li><a href="#" class="btn-login">Iniciar Sesión</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard principal -->
+    <section class="dashboard-section">
+        <div class="container">
+            <!-- Cabecera del dashboard -->
+            <div class="dashboard-header">
+                <div class="user-welcome">
+                    <h2>Bienvenido, Carlos</h2>
+                    <p>Última conexión: 15/09/2025 12:30</p>
+                </div>
+                <div class="user-actions">
+                    <button id="btnTransfer" class="btn btn-primary"><i class="fas fa-exchange-alt"></i> Transferir</button>
+                    <div class="user-profile">
+                        <img src="img/profile-placeholder.svg" alt="Perfil">
+                        <span class="notification-badge">3</span>
+                        <button id="btnNotifications"><i class="fas fa-bell"></i></button>
+                        <div class="dropdown-menu">
+                            <a href="#" id="btnProfile"><i class="fas fa-user"></i> Mi Perfil</a>
+                            <a href="#" id="btnSettings"><i class="fas fa-cog"></i> Configuración</a>
+                            <a href="#" id="btnLogout"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resumen de cuentas -->
+            <div class="accounts-summary">
+                <h3>Mis Cuentas</h3>
+                <div class="accounts-grid">
+                    <!-- Cuenta corriente -->
+                    <div class="account-card">
+                        <div class="account-header">
+                            <h4>Cuenta Corriente</h4>
+                            <span class="account-number">ES12 3456 7890 1234</span>
+                        </div>
+                        <div class="account-body">
+                            <div class="account-balance">2.547,35 €</div>
+                            <div class="account-available">Disponible: 2.547,35 €</div>
+                        </div>
+                        <div class="account-actions">
+                            <a href="#" class="btn-details">Ver Detalles</a>
+                            <a href="#" class="btn-transfer">Transferir</a>
+                        </div>
+                    </div>
+
+                    <!-- Cuenta de ahorro -->
+                    <div class="account-card">
+                        <div class="account-header">
+                            <h4>Cuenta de Ahorro</h4>
+                            <span class="account-number">ES98 7654 3210 9876</span>
+                        </div>
+                        <div class="account-body">
+                            <div class="account-balance">15.320,00 €</div>
+                            <div class="account-available">Disponible: 15.320,00 €</div>
+                        </div>
+                        <div class="account-actions">
+                            <a href="#" class="btn-details">Ver Detalles</a>
+                            <a href="#" class="btn-transfer">Transferir</a>
+                        </div>
+                    </div>
+
+                    <!-- Añadir cuenta -->
+                    <div class="account-card add-account">
+                        <div class="add-account-content">
+                            <i class="fas fa-plus-circle"></i>
+                            <h4>Añadir Cuenta</h4>
+                            <p>Vincula una nueva cuenta a tu perfil</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Widgets financieros -->
+            <div class="financial-widgets">
+                <!-- Resumen financiero -->
+                <div class="widget financial-summary">
+                    <div class="widget-header">
+                        <h3>Resumen Financiero</h3>
+                        <div class="widget-actions">
+                            <button class="btn-refresh"><i class="fas fa-sync-alt"></i></button>
+                            <button class="btn-expand"><i class="fas fa-expand-alt"></i></button>
+                        </div>
+                    </div>
+                    <div class="widget-body">
+                        <canvas id="financialSummaryChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Próximos pagos -->
+                <div class="widget upcoming-payments">
+                    <div class="widget-header">
+                        <h3>Próximos Pagos</h3>
+                        <div class="widget-actions">
+                            <button class="btn-refresh"><i class="fas fa-sync-alt"></i></button>
+                            <button class="btn-expand"><i class="fas fa-expand-alt"></i></button>
+                        </div>
+                    </div>
+                    <div class="widget-body">
+                        <ul class="payment-list">
+                            <li class="payment-item">
+                                <div class="payment-icon"><i class="fas fa-home"></i></div>
+                                <div class="payment-details">
+                                    <h4>Hipoteca</h4>
+                                    <p>25/09/2025</p>
+                                </div>
+                                <div class="payment-amount">850,00 €</div>
+                            </li>
+                            <li class="payment-item">
+                                <div class="payment-icon"><i class="fas fa-bolt"></i></div>
+                                <div class="payment-details">
+                                    <h4>Electricidad</h4>
+                                    <p>28/09/2025</p>
+                                </div>
+                                <div class="payment-amount">75,30 €</div>
+                            </li>
+                            <li class="payment-item">
+                                <div class="payment-icon"><i class="fas fa-car"></i></div>
+                                <div class="payment-details">
+                                    <h4>Seguro Coche</h4>
+                                    <p>02/10/2025</p>
+                                </div>
+                                <div class="payment-amount">120,50 €</div>
+                            </li>
+                            <li class="payment-item add-payment">
+                                <div class="add-payment-content">
+                                    <i class="fas fa-plus"></i>
+                                    <span>Añadir Pago</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="widget-footer">
+                        <a href="#" class="view-all">Ver todos los pagos</a>
+                    </div>
+                </div>
+
+                <!-- Productos contratados -->
+                <div class="widget products">
+                    <div class="widget-header">
+                        <h3>Productos Contratados</h3>
+                        <div class="widget-actions">
+                            <button class="btn-refresh"><i class="fas fa-sync-alt"></i></button>
+                            <button class="btn-expand"><i class="fas fa-expand-alt"></i></button>
+                        </div>
+                    </div>
+                    <div class="widget-body">
+                        <ul class="product-list">
+                            <li class="product-item">
+                                <div class="product-icon"><i class="fas fa-credit-card"></i></div>
+                                <div class="product-details">
+                                    <h4>Tarjeta Oro</h4>
+                                    <p>Límite: 3.000,00 €</p>
+                                </div>
+                                <div class="product-status active">Activa</div>
+                            </li>
+                            <li class="product-item">
+                                <div class="product-icon"><i class="fas fa-shield-alt"></i></div>
+                                <div class="product-details">
+                                    <h4>Seguro de Vida</h4>
+                                    <p>Cobertura: 150.000,00 €</p>
+                                </div>
+                                <div class="product-status active">Activo</div>
+                            </li>
+                            <li class="product-item">
+                                <div class="product-icon"><i class="fas fa-home"></i></div>
+                                <div class="product-details">
+                                    <h4>Hipoteca</h4>
+                                    <p>Pendiente: 120.500,00 €</p>
+                                </div>
+                                <div class="product-status active">Activa</div>
+                            </li>
+                            <li class="product-item add-product">
+                                <div class="add-product-content">
+                                    <i class="fas fa-plus"></i>
+                                    <span>Añadir Producto</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accesos rápidos -->
+            <div class="quick-access">
+                <h3>Accesos Rápidos</h3>
+                <div class="quick-access-grid">
+                    <a href="transacciones.html" class="quick-access-item">
+                        <div class="quick-access-icon"><i class="fas fa-exchange-alt"></i></div>
+                        <div class="quick-access-label">Transacciones</div>
+                    </a>
+                    <a href="prestamos.html" class="quick-access-item">
+                        <div class="quick-access-icon"><i class="fas fa-calculator"></i></div>
+                        <div class="quick-access-label">Simulador de Préstamos</div>
+                    </a>
+                    <a href="#" class="quick-access-item">
+                        <div class="quick-access-icon"><i class="fas fa-piggy-bank"></i></div>
+                        <div class="quick-access-label">Depósitos</div>
+                    </a>
+                    <a href="#" class="quick-access-item">
+                        <div class="quick-access-icon"><i class="fas fa-credit-card"></i></div>
+                        <div class="quick-access-label">Tarjetas</div>
+                    </a>
+                    <a href="#" class="quick-access-item">
+                        <div class="quick-access-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="quick-access-label">Inversiones</div>
+                    </a>
+                    <a href="#" class="quick-access-item">
+                        <div class="quick-access-icon"><i class="fas fa-headset"></i></div>
+                        <div class="quick-access-label">Soporte</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>BancoSeguro</h2>
+                    <p>Tu entidad bancaria de confianza desde 1995.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="index.html#servicios">Servicios</a></li>
+                        <li><a href="index.html#nosotros">Nosotros</a></li>
+                        <li><a href="index.html#contacto">Contacto</a></li>
+                        <li><a href="transacciones.html">Transacciones</a></li>
+                        <li><a href="dashboard.html">Mi Cuenta</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h3>Servicios</h3>
+                    <ul>
+                        <li><a href="dashboard.html">Cuentas Bancarias</a></li>
+                        <li><a href="prestamos.html">Préstamos</a></li>
+                        <li><a href="#">Tarjetas de Crédito</a></li>
+                        <li><a href="#">Inversiones</a></li>
+                        <li><a href="#">Seguros</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Síguenos</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    &copy; 2025 BancoSeguro. Todos los derechos reservados.
+                </div>
+                <div class="footer-legal">
+                    <a href="#">Términos y Condiciones</a>
+                    <a href="#">Política de Privacidad</a>
+                    <a href="#">Aviso Legal</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

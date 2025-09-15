@@ -1,0 +1,344 @@
+/* Estilos para la página de transacciones */
+.transactions {
+    background-color: #f8f9fa;
+    padding: 80px 0;
+}
+
+/* Resumen de cuenta */
+.account-summary {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    padding: 25px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.account-info {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.account-details h3 {
+    color: #1a3b5d;
+    margin: 0 0 5px 0;
+    font-size: 1.2rem;
+}
+
+.account-number {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.account-balance {
+    text-align: right;
+}
+
+.balance-label {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.balance-amount {
+    color: #1a3b5d;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.quick-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+/* Contenedor de transacciones */
+.transactions-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+/* Filtros de transacciones */
+.transactions-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e4e7eb;
+}
+
+.filter-group {
+    flex: 1;
+    min-width: 150px;
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.filter-group select,
+.filter-group input[type="text"],
+.filter-group input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+.search-input {
+    position: relative;
+}
+
+.search-input input {
+    padding-right: 35px;
+}
+
+.search-input i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+}
+
+#applyFilters {
+    align-self: flex-end;
+    margin-bottom: 0;
+}
+
+/* Lista de transacciones */
+.transactions-list {
+    margin-bottom: 25px;
+}
+
+.transactions-header {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr 1fr;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    font-weight: 600;
+    color: #1a3b5d;
+}
+
+.transaction-item {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr 1fr;
+    padding: 15px;
+    border-bottom: 1px solid #e4e7eb;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.transaction-item:hover {
+    background-color: #f8f9fa;
+}
+
+.transaction-item:last-child {
+    border-bottom: none;
+}
+
+.transaction-date {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.transaction-concept {
+    color: #333;
+}
+
+.transaction-category {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 5px;
+}
+
+.transaction-amount {
+    font-weight: 600;
+    text-align: right;
+}
+
+.transaction-amount.income {
+    color: #4CAF50;
+}
+
+.transaction-amount.expense {
+    color: #f44336;
+}
+
+.transaction-balance {
+    color: #1a3b5d;
+    text-align: right;
+}
+
+/* Resumen de transacciones */
+.transactions-summary {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    border-top: 1px solid #e4e7eb;
+    margin-bottom: 20px;
+}
+
+.summary-item {
+    text-align: center;
+    flex: 1;
+}
+
+.summary-label {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.summary-value {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1a3b5d;
+}
+
+.summary-value.income {
+    color: #4CAF50;
+}
+
+.summary-value.expense {
+    color: #f44336;
+}
+
+/* Paginación */
+.transactions-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.pagination-btn {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background-color: #e9ecef;
+}
+
+.pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination-info {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Gráficos */
+.transactions-charts {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.chart-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    padding: 25px;
+}
+
+.chart-container h3 {
+    color: #1a3b5d;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+/* Modal de transferencia */
+.amount-input {
+    position: relative;
+}
+
+.amount-input input {
+    padding-right: 30px;
+}
+
+.amount-input .currency {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .transactions-charts {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .account-info,
+    .quick-actions {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+    
+    .account-balance {
+        text-align: center;
+        margin-top: 15px;
+    }
+    
+    .transactions-header,
+    .transaction-item {
+        grid-template-columns: 1fr 2fr 1fr;
+    }
+    
+    .transaction-balance {
+        display: none;
+    }
+    
+    .transactions-summary {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .transactions-header,
+    .transaction-item {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .transaction-concept {
+        grid-column: span 2;
+        margin-top: 5px;
+    }
+    
+    .filter-group {
+        min-width: 100%;
+    }
+}

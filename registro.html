@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Cuenta - BancoSeguro</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/registro.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header con navegación -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>BancoSeguro</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="index.html#servicios">Servicios</a></li>
+                    <li><a href="index.html#nosotros">Nosotros</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                    <li><a href="#" class="btn-login">Iniciar Sesión</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sección de Registro -->
+    <section class="registro">
+        <div class="container">
+            <div class="section-header">
+                <h2>Abre tu Cuenta en BancoSeguro</h2>
+                <p>Completa el formulario para comenzar a disfrutar de todos nuestros servicios</p>
+            </div>
+
+            <div class="registro-content">
+                <div class="registro-steps">
+                    <div class="step active" id="step1">
+                        <div class="step-number">1</div>
+                        <div class="step-text">Datos Personales</div>
+                    </div>
+                    <div class="step" id="step2">
+                        <div class="step-number">2</div>
+                        <div class="step-text">Datos de Contacto</div>
+                    </div>
+                    <div class="step" id="step3">
+                        <div class="step-number">3</div>
+                        <div class="step-text">Tipo de Cuenta</div>
+                    </div>
+                    <div class="step" id="step4">
+                        <div class="step-number">4</div>
+                        <div class="step-text">Confirmación</div>
+                    </div>
+                </div>
+
+                <div class="registro-form">
+                    <form id="registroForm">
+                        <!-- Paso 1: Datos Personales -->
+                        <div class="form-step" id="formStep1">
+                            <h3>Datos Personales</h3>
+                            <div class="form-group">
+                                <label for="nombre">Nombre*</label>
+                                <input type="text" id="nombre" name="nombre" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="apellidos">Apellidos*</label>
+                                <input type="text" id="apellidos" name="apellidos" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="dni">DNI/NIE*</label>
+                                <input type="text" id="dni" name="dni" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="fechaNacimiento">Fecha de Nacimiento*</label>
+                                <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="nacionalidad">Nacionalidad*</label>
+                                <select id="nacionalidad" name="nacionalidad" required>
+                                    <option value="" disabled selected>Selecciona tu nacionalidad</option>
+                                    <option value="española">Española</option>
+                                    <option value="otra">Otra</option>
+                                </select>
+                            </div>
+                            <div class="form-buttons">
+                                <button type="button" class="btn btn-primary next-step">Siguiente</button>
+                            </div>
+                        </div>
+
+                        <!-- Paso 2: Datos de Contacto -->
+                        <div class="form-step" id="formStep2" style="display: none;">
+                            <h3>Datos de Contacto</h3>
+                            <div class="form-group">
+                                <label for="email">Email*</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="telefono">Teléfono Móvil*</label>
+                                <input type="tel" id="telefono" name="telefono" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="direccion">Dirección*</label>
+                                <input type="text" id="direccion" name="direccion" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="codigoPostal">Código Postal*</label>
+                                <input type="text" id="codigoPostal" name="codigoPostal" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="poblacion">Población*</label>
+                                <input type="text" id="poblacion" name="poblacion" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="provincia">Provincia*</label>
+                                <select id="provincia" name="provincia" required>
+                                    <option value="" disabled selected>Selecciona tu provincia</option>
+                                    <option value="madrid">Madrid</option>
+                                    <option value="barcelona">Barcelona</option>
+                                    <option value="valencia">Valencia</option>
+                                    <option value="sevilla">Sevilla</option>
+                                    <option value="zaragoza">Zaragoza</option>
+                                    <option value="malaga">Málaga</option>
+                                    <option value="murcia">Murcia</option>
+                                    <option value="palma">Palma de Mallorca</option>
+                                    <option value="laspalmas">Las Palmas de Gran Canaria</option>
+                                    <option value="bilbao">Bilbao</option>
+                                    <option value="alicante">Alicante</option>
+                                    <option value="cordoba">Córdoba</option>
+                                    <option value="valladolid">Valladolid</option>
+                                    <option value="vigo">Vigo</option>
+                                    <option value="gijon">Gijón</option>
+                                </select>
+                            </div>
+                            <div class="form-buttons">
+                                <button type="button" class="btn btn-secondary prev-step">Anterior</button>
+                                <button type="button" class="btn btn-primary next-step">Siguiente</button>
+                            </div>
+                        </div>
+
+                        <!-- Paso 3: Tipo de Cuenta -->
+                        <div class="form-step" id="formStep3" style="display: none;">
+                            <h3>Tipo de Cuenta</h3>
+                            <div class="account-options">
+                                <div class="account-option">
+                                    <input type="radio" id="cuentaBasica" name="tipoCuenta" value="basica" checked>
+                                    <label for="cuentaBasica" class="account-label">
+                                        <div class="account-icon">
+                                            <i class="fas fa-piggy-bank"></i>
+                                        </div>
+                                        <div class="account-details">
+                                            <h4>Cuenta Básica</h4>
+                                            <p>Sin comisiones de mantenimiento</p>
+                                            <ul>
+                                                <li>Tarjeta de débito gratuita</li>
+                                                <li>Banca online y móvil</li>
+                                                <li>Transferencias SEPA gratuitas</li>
+                                            </ul>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="account-option">
+                                    <input type="radio" id="cuentaPremium" name="tipoCuenta" value="premium">
+                                    <label for="cuentaPremium" class="account-label">
+                                        <div class="account-icon">
+                                            <i class="fas fa-gem"></i>
+                                        </div>
+                                        <div class="account-details">
+                                            <h4>Cuenta Premium</h4>
+                                            <p>Ventajas exclusivas</p>
+                                            <ul>
+                                                <li>Tarjeta de crédito sin comisiones</li>
+                                                <li>Seguro de protección de compras</li>
+                                                <li>Descuentos en servicios financieros</li>
+                                                <li>Atención prioritaria</li>
+                                            </ul>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="account-option">
+                                    <input type="radio" id="cuentaJoven" name="tipoCuenta" value="joven">
+                                    <label for="cuentaJoven" class="account-label">
+                                        <div class="account-icon">
+                                            <i class="fas fa-graduation-cap"></i>
+                                        </div>
+                                        <div class="account-details">
+                                            <h4>Cuenta Joven</h4>
+                                            <p>Para menores de 30 años</p>
+                                            <ul>
+                                                <li>Sin comisiones</li>
+                                                <li>Tarjeta prepago gratuita</li>
+                                                <li>Descuentos en ocio y cultura</li>
+                                                <li>Programa de puntos exclusivo</li>
+                                            </ul>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="username">Nombre de Usuario*</label>
+                                <input type="text" id="username" name="username" required>
+                                <small>Este será tu identificador para acceder a la banca online</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Contraseña*</label>
+                                <input type="password" id="password" name="password" required>
+                                <small>Mínimo 8 caracteres, incluyendo mayúsculas, minúsculas y números</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirmar Contraseña*</label>
+                                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                            </div>
+                            <div class="form-buttons">
+                                <button type="button" class="btn btn-secondary prev-step">Anterior</button>
+                                <button type="button" class="btn btn-primary next-step">Siguiente</button>
+                            </div>
+                        </div>
+
+                        <!-- Paso 4: Confirmación -->
+                        <div class="form-step" id="formStep4" style="display: none;">
+                            <h3>Confirmación</h3>
+                            <div class="confirmation-message">
+                                <div class="confirmation-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <p>Por favor, revisa los datos introducidos antes de finalizar el registro.</p>
+                            </div>
+                            <div class="summary-container">
+                                <div class="summary-section">
+                                    <h4>Datos Personales</h4>
+                                    <div class="summary-data" id="summaryPersonal"></div>
+                                </div>
+                                <div class="summary-section">
+                                    <h4>Datos de Contacto</h4>
+                                    <div class="summary-data" id="summaryContact"></div>
+                                </div>
+                                <div class="summary-section">
+                                    <h4>Tipo de Cuenta</h4>
+                                    <div class="summary-data" id="summaryAccount"></div>
+                                </div>
+                            </div>
+                            <div class="form-group terms-group">
+                                <input type="checkbox" id="terminos" name="terminos" required>
+                                <label for="terminos">He leído y acepto los <a href="#" class="terms-link">términos y condiciones</a> y la <a href="#" class="privacy-link">política de privacidad</a>.</label>
+                            </div>
+                            <div class="form-buttons">
+                                <button type="button" class="btn btn-secondary prev-step">Anterior</button>
+                                <button type="submit" class="btn btn-primary">Completar Registro</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de Login -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Iniciar Sesión</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginUsername">Usuario</label>
+                    <input type="text" id="loginUsername" name="loginUsername" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Contraseña</label>
+                    <input type="password" id="loginPassword" name="loginPassword" required>
+                </div>
+                <div class="form-options">
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label for="remember">Recordarme</label>
+                    </div>
+                    <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+            </form>
+            <div class="register-link">
+                <p>¿No tienes cuenta? <a href="registro.html">Regístrate aquí</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Éxito -->
+    <div id="successModal" class="modal">
+        <div class="modal-content success-modal">
+            <span class="close">&times;</span>
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>¡Registro Completado!</h2>
+            <p>Tu cuenta ha sido creada con éxito. Hemos enviado un correo electrónico de confirmación a la dirección proporcionada.</p>
+            <p>Tu número de cuenta es: <span id="accountNumber"></span></p>
+            <p>Ahora puedes acceder a tu área de cliente con las credenciales que has creado.</p>
+            <button type="button" class="btn btn-primary btn-block" id="goToDashboard">Ir a Mi Área Cliente</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>BancoSeguro</h2>
+                    <p>Tu entidad bancaria de confianza</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="index.html#servicios">Servicios</a></li>
+                        <li><a href="index.html#nosotros">Nosotros</a></li>
+                        <li><a href="index.html#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h3>Servicios</h3>
+                    <ul>
+                        <li><a href="#">Cuentas Bancarias</a></li>
+                        <li><a href="#">Préstamos</a></li>
+                        <li><a href="#">Tarjetas</a></li>
+                        <li><a href="#">Inversiones</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Síguenos</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 BancoSeguro. Todos los derechos reservados.</p>
+                <div class="footer-legal">
+                    <a href="#">Términos y Condiciones</a>
+                    <a href="#">Política de Privacidad</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/registro.js"></script>
+</body>
+</html>

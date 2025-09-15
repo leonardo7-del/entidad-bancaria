@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Préstamos - BancoSeguro</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/prestamos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header con navegación -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>BancoSeguro</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="index.html#servicios">Servicios</a></li>
+                    <li><a href="index.html#nosotros">Nosotros</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                    <li><a href="#" class="btn-login">Iniciar Sesión</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sección de Simulador de Préstamos -->
+    <section class="loan-simulator">
+        <div class="container">
+            <div class="section-header">
+                <h2>Simulador de Préstamos</h2>
+                <p>Calcula tu préstamo ideal y conoce las cuotas mensuales</p>
+            </div>
+
+            <div class="simulator-container">
+                <div class="simulator-form">
+                    <h3>Configura tu préstamo</h3>
+                    <form id="loanForm">
+                        <div class="form-group">
+                            <label for="loanType">Tipo de préstamo</label>
+                            <select id="loanType" name="loanType" required>
+                                <option value="" disabled selected>Selecciona un tipo</option>
+                                <option value="personal">Préstamo Personal</option>
+                                <option value="hipotecario">Préstamo Hipotecario</option>
+                                <option value="auto">Préstamo para Auto</option>
+                                <option value="educativo">Préstamo Educativo</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="loanAmount">Cantidad (€)</label>
+                            <input type="range" id="loanAmountRange" min="1000" max="300000" step="1000" value="50000">
+                            <div class="range-values">
+                                <span>1.000€</span>
+                                <input type="number" id="loanAmount" name="loanAmount" min="1000" max="300000" value="50000" required>
+                                <span>300.000€</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="loanTerm">Plazo (años)</label>
+                            <input type="range" id="loanTermRange" min="1" max="30" step="1" value="5">
+                            <div class="range-values">
+                                <span>1 año</span>
+                                <input type="number" id="loanTerm" name="loanTerm" min="1" max="30" value="5" required>
+                                <span>30 años</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="interestRate">Tasa de interés (%)</label>
+                            <input type="number" id="interestRate" name="interestRate" min="0.1" max="15" step="0.1" value="5.5" required>
+                            <small>La tasa de interés puede variar según tu perfil crediticio y el tipo de préstamo.</small>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Calcular</button>
+                    </form>
+                </div>
+
+                <div class="simulator-results">
+                    <h3>Resultados de tu préstamo</h3>
+                    <div class="results-container">
+                        <div class="result-card">
+                            <div class="result-icon">
+                                <i class="fas fa-money-bill-wave"></i>
+                            </div>
+                            <div class="result-value">
+                                <span id="monthlyPayment">0€</span>
+                            </div>
+                            <div class="result-label">Cuota mensual</div>
+                        </div>
+
+                        <div class="result-card">
+                            <div class="result-icon">
+                                <i class="fas fa-percentage"></i>
+                            </div>
+                            <div class="result-value">
+                                <span id="totalInterest">0€</span>
+                            </div>
+                            <div class="result-label">Intereses totales</div>
+                        </div>
+
+                        <div class="result-card">
+                            <div class="result-icon">
+                                <i class="fas fa-coins"></i>
+                            </div>
+                            <div class="result-value">
+                                <span id="totalPayment">0€</span>
+                            </div>
+                            <div class="result-label">Total a pagar</div>
+                        </div>
+                    </div>
+
+                    <div class="amortization-table-container">
+                        <h4>Tabla de amortización</h4>
+                        <div class="table-responsive">
+                            <table id="amortizationTable" class="amortization-table">
+                                <thead>
+                                    <tr>
+                                        <th>Año</th>
+                                        <th>Cuota mensual</th>
+                                        <th>Pago a capital</th>
+                                        <th>Pago a interés</th>
+                                        <th>Capital pendiente</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- La tabla se llenará con JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="chart-container">
+                        <h4>Distribución del préstamo</h4>
+                        <canvas id="loanChart"></canvas>
+                    </div>
+
+                    <div class="cta-container">
+                        <p>¿Te interesa este préstamo? Solicítalo ahora y obtén una respuesta en 24 horas.</p>
+                        <a href="registro.html" class="btn btn-primary">Solicitar préstamo</a>
+                        <button id="downloadPdf" class="btn btn-secondary"><i class="fas fa-file-pdf"></i> Descargar simulación</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Ventajas -->
+    <section class="loan-benefits">
+        <div class="container">
+            <div class="section-header">
+                <h2>Ventajas de nuestros préstamos</h2>
+                <p>Descubre por qué nuestros préstamos son la mejor opción</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Aprobación rápida</h3>
+                    <p>Respuesta en menos de 24 horas para préstamos personales y autos.</p>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h3>Sin comisiones ocultas</h3>
+                    <p>Transparencia total en todas nuestras operaciones.</p>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-sliders-h"></i>
+                    </div>
+                    <h3>Flexibilidad de pago</h3>
+                    <p>Adapta tus cuotas a tu situación financiera.</p>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Seguro de protección</h3>
+                    <p>Protección opcional ante imprevistos como desempleo o enfermedad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Preguntas Frecuentes -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Preguntas Frecuentes</h2>
+                <p>Resolvemos tus dudas sobre nuestros préstamos</p>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Cuáles son los requisitos para solicitar un préstamo?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Los requisitos básicos incluyen ser mayor de edad, tener residencia legal en España, ingresos regulares demostrables y un buen historial crediticio. Los requisitos específicos pueden variar según el tipo de préstamo.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Cuánto tiempo tarda en aprobarse un préstamo?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Los préstamos personales y de auto suelen aprobarse en 24-48 horas. Los préstamos hipotecarios pueden tardar entre 2 y 4 semanas debido a la valoración de la propiedad y otros trámites legales.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Puedo cancelar mi préstamo anticipadamente?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sí, todos nuestros préstamos permiten la cancelación anticipada. En préstamos personales y de auto, la comisión por cancelación anticipada es del 0.5% si el plazo restante es inferior a 12 meses, y del 1% si es superior. En préstamos hipotecarios, la comisión máxima es del 0.25%.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Qué ocurre si no puedo pagar una cuota?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Te recomendamos contactarnos inmediatamente si prevés dificultades para pagar. Podemos ofrecerte soluciones como un período de carencia o la reestructuración del préstamo. Si no se notifica, se aplicarán intereses de demora y podría afectar a tu historial crediticio.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de Login -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Iniciar Sesión</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Usuario</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-options">
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label for="remember">Recordarme</label>
+                    </div>
+                    <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+            </form>
+            <div class="register-link">
+                <p>¿No tienes cuenta? <a href="registro.html">Regístrate aquí</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>BancoSeguro</h2>
+                    <p>Tu entidad bancaria de confianza</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="index.html#servicios">Servicios</a></li>
+                        <li><a href="index.html#nosotros">Nosotros</a></li>
+                        <li><a href="index.html#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h3>Servicios</h3>
+                    <ul>
+                        <li><a href="registro.html">Cuentas Bancarias</a></li>
+                        <li><a href="prestamos.html">Préstamos</a></li>
+                        <li><a href="#">Tarjetas</a></li>
+                        <li><a href="#">Inversiones</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Síguenos</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 BancoSeguro. Todos los derechos reservados.</p>
+                <div class="footer-legal">
+                    <a href="#">Términos y Condiciones</a>
+                    <a href="#">Política de Privacidad</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/prestamos.js"></script>
+</body>
+</html>
